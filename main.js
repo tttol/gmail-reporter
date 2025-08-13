@@ -1,6 +1,9 @@
-/**
- * Reads Gmail emails received yesterday and creates and sends a summary report.
- */
+// Configuration: Replace with your Google Spreadsheet ID
+const SPREADSHEET_ID = PropertiesService.getScriptProperties().getProperty("SPREADSHEET_ID");
+
+// Email lists - will be loaded from Google Spreadsheet
+let FOCUS_LIST = [];
+let IGNORE_LIST = [];
 
 /**
  * Main entry point for the Gmail Reporter application
@@ -9,12 +12,6 @@ function main() {
   sendDailyEmailSummary();
 }
 
-// Configuration: Replace with your Google Spreadsheet ID
-const SPREADSHEET_ID = '1oSxmDI0Ggc2MJL-64umy7uaVHHPS7LdlrJ5QpnuWXNQ';
-
-// Email lists - will be loaded from Google Spreadsheet
-let FOCUS_LIST = [];
-let IGNORE_LIST = [];
 
 /**
  * Load email list from a specific sheet in the spreadsheet
