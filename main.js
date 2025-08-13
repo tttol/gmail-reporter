@@ -4,14 +4,14 @@
 function sendDailyEmailSummary() {
   const recipientEmail = Session.getActiveUser().getEmail(); 
   const today = new Date();
-  const yesterday = today.setDate(yesterday.getDate() - 1);
+  const yesterday = today.setDate(today.getDate() - 1);
   const formattedDate = Utilities.formatDate(yesterday, Session.getScriptTimeZone(), "yyyy/MM/dd");
 
   let summaryReport = `--- Gmail Daily Summary Report for ${formattedDate} ---\n\n`;
 
   try {
     // 昨日の日付でGmailを検索
-    const query = `after:${Utilities.formatDate(today, Session.getScriptTimeZone(), "yyyy/MM/dd")} before:${Utilities.formatDate(today, Session.getScriptTimeZone(), "yyyy/MM/dd")}`;
+    const query = `after:${Utilities.formatDate(yesterday, Session.getScriptTimeZone(), "yyyy/MM/dd")} before:${Utilities.formatDate(today, Session.getScriptTimeZone(), "yyyy/MM/dd")}`;
     const threads = GmailApp.search(query);
 
     if (threads.length === 0) {
