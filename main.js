@@ -17,6 +17,7 @@ let IGNORE_LIST = [];
  */
 function loadEmailListFromSheet(spreadsheet, sheetName) {
   try {
+    Logger.log(`sheet name: ${sheetName}`);
     const sheet = spreadsheet.getSheetByName(sheetName);
     if (sheet) {
       const data = sheet.getRange('A:A').getValues();
@@ -40,6 +41,9 @@ function loadEmailListFromSheet(spreadsheet, sheetName) {
 function loadEmailListsFromSpreadsheet() {
   try {
     const spreadsheet = SpreadsheetApp.openById(SPREADSHEET_ID);
+    if (!spreadsheet) {
+      Logger.log('Cannot open spreadsheet.');
+    }
     
     // Load focus list from 'focus' sheet
     FOCUS_LIST = loadEmailListFromSheet(spreadsheet, 'focus');
