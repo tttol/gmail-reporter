@@ -4,7 +4,7 @@
 function sendDailyEmailSummary() {
   const recipientEmail = Session.getActiveUser().getEmail(); 
   const today = new Date();
-  const yesterday = today.setDate(today.getDate() - 1);
+  const yesterday = today.getDate() - 1;
   const formattedDate = Utilities.formatDate(yesterday, Session.getScriptTimeZone(), "yyyy/MM/dd");
 
   let summaryReport = `--- Gmail Daily Summary Report for ${formattedDate} ---\n\n`;
