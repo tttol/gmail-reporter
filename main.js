@@ -11,7 +11,7 @@ function sendDailyEmailSummary() {
 
   try {
     // 昨日の日付でGmailを検索
-    const query = `after:${Utilities.formatDate(yesterday, Session.getScriptTimeZone(), "yyyy/MM/dd")} before:${Utilities.formatDate(today, Session.getScriptTimeZone(), "yyyy/MM/dd")}`;
+    const query = `after:${Utilities.formatDate(today, Session.getScriptTimeZone(), "yyyy/MM/dd")} before:${Utilities.formatDate(today, Session.getScriptTimeZone(), "yyyy/MM/dd")}`;
     const threads = GmailApp.search(query);
 
     if (threads.length === 0) {
