@@ -2,6 +2,13 @@
  * Reads Gmail emails received yesterday and creates and sends a summary report.
  */
 
+/**
+ * Main entry point for the Gmail Reporter application
+ */
+function main() {
+  sendDailyEmailSummary();
+}
+
 // Configuration: Replace with your Google Spreadsheet ID
 const SPREADSHEET_ID = '1oSxmDI0Ggc2MJL-64umy7uaVHHPS7LdlrJ5QpnuWXNQ';
 
